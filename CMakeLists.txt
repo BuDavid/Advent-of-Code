@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+cmake_policy(SET CMP0074 NEW)
+
+project(AOC)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(SM_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/SolutionManager/include")
+set(SM_SOURCE_DIR "${CMAKE_SOURCE_DIR}/SolutionManager/src")
+set(SOLUTIONS_DIR "${CMAKE_SOURCE_DIR}/Solutions")
+
+file(GLOB_RECURSE SOLUTION_SOURCE_FILES "${SOLUTIONS_DIR}/*.cpp")
+file(GLOB_RECURSE SM_SOURCE_FILES "${SM_SOURCE_DIR}/*.cpp")
+
+include_directories(${SM_INCLUDE_DIR})
+
+add_executable(${PROJECT_NAME} ${SM_SOURCE_FILES} ${SOLUTION_SOURCE_FILES})
